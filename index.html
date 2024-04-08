@@ -8,12 +8,18 @@
 <body>
     <div class="list1">
         <h1>list</h1>
-        <input type="text" id="input1" placeholder="type here">
+        <form>
+            <label for="task-input">Enter task</label>
+        <input type="text" id="task-input" placeholder="type here">
+    </form>
     </div>
     <ul id="theList">
-        <li></li>
+      
     </ul>
-    <button onclick="">click</button>
-    <script src="script.js"></script>
+    <button onclick="addToList()">click</button>
+    <script src="script.js">
+        const form = document.querySelector('form')
+        const taskList = document.querySelector('#task-list')
+    </script>
 </body>
 </html>
