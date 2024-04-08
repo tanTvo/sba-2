@@ -1,37 +1,23 @@
-//console.log('hello')
+const form = document.querySelector('form');
+const taskList = document.querySelector('#task-list');
 
-const input1 = document.getElementById('input1');
+function addTask(task){
+    
+    const listItem = document.createElement('li')
+    listItem.innerHTML = `<input type="checkbox"'/> <span>${task}</span><button>delete</button>`;
+    taskList.appendChild(listItem)
+}
+form.addEventListener('submit' , (event) =>{
+    event.preventDefault();
+    const input = window.document.querySelector('#task-input');
+    const task = input.value;
+    addTask(task);
+    input.value = ''
+} )
 
-const thelist = document.getElementById('theList');
-
-function addToList() {
-    const listText = input1.value.trim();
-    if (listText !== ''){
-        const li = document.createElement('li');
-       li.addEventlistener('click', completeList);
-        li.textContent = listText;
-        thelist.appendChild(li);
-        input1.value = '';
-        
+taskList.addEventListener('click', (event) =>{
+    if(event.target.tagName === 'BUTTON' ){
+        const listItem = event.target.parentElement;
+        taskList.removeChild(listItem);
     }
-
-}
-
-function completeList(event){
-    const assignT = event.target;
-    assignT.classList.toggle('completed');
-  
-}
-
-
-
-function deleteList(event){
-    const assignT = event.target.parentElement;
-    list.removeChild(assignT);
- 
-}
-
-   const deleteBtn = document.createElement('button');
-   deleteBtn.textContent = "Delete";
-deleteBtn.addEventListener('click', deleteTask);
-li.appendChild(deleteBtn);
+})
